@@ -96,11 +96,11 @@ public class RegresInTests {
                 .contentType(JSON)
                 .body(data)
                 .when()
-                .post("https://reqres.in/api/users/2")
+                .put("https://reqres.in/api/users/2")
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(201)
+                .statusCode(200)
                 .body("name", is("morpheus"),"job", is("zion resident"));
 
     }
