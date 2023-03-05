@@ -2,6 +2,7 @@ package tests;
 
 import model.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -12,6 +13,7 @@ import static specs.RegisterSpec.*;
 public class RegresInExtendedTests {
 
     @DisplayName("Register-Successful")
+    @Tag("rest-api")
     @Test
     void registerWithSpecSuccessful() {
         RegisterBodyLombokModel registerBody = new RegisterBodyLombokModel();
@@ -35,6 +37,7 @@ public class RegresInExtendedTests {
 
 
     @DisplayName("Register without password")
+    @Tag("rest-api")
     @Test
     void registerWithSpecUnsuccessful() {
 
@@ -55,6 +58,7 @@ public class RegresInExtendedTests {
     }
 
     @DisplayName("Register without email")
+    @Tag("rest-api")
     @Test
     void registerWithSpecUnsuccessfulWithoutEmail() {
 
@@ -76,6 +80,7 @@ public class RegresInExtendedTests {
 
 
     @DisplayName("Register without data")
+    @Tag("rest-api")
     @Test
     void registerWithSpecUnsuccessfulWithoutData() {
 
@@ -96,6 +101,7 @@ public class RegresInExtendedTests {
 
 
     @DisplayName("Successful update")
+    @Tag("rest-api")
     @Test
     void updateJobSuccessful() {
         UpdateBodyLombokModel updateBody = new UpdateBodyLombokModel();

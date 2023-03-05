@@ -48,3 +48,8 @@ tasks.withType(Test) {
         }
     }
 }
+task run_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags ("rest-api")
+    }
+}
