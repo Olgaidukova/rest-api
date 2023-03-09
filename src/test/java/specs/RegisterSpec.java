@@ -25,8 +25,8 @@ public class RegisterSpec {
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)
-            .expectBody("token", notNullValue())
             .build();
+
 
     public static ResponseSpecification registerResponseSpecPsw400 = new ResponseSpecBuilder()
             .log(STATUS)

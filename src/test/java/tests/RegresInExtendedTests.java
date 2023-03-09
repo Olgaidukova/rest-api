@@ -9,6 +9,7 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static specs.RegisterSpec.*;
+import static org.hamcrest.CoreMatchers.*;
 
 public class RegresInExtendedTests {
 
@@ -120,6 +121,39 @@ public class RegresInExtendedTests {
             assertThat(updateResponse.getName()).isEqualTo("morpheus");
             assertThat(updateResponse.getJob()).isEqualTo("zion resident");
             assertThat(updateResponse.getUpdatedAt()).isNotNull();
+        });
+    }
+
+
+
+    @DisplayName("List users")
+    @Tag("rest-api")
+    @Test
+    void listUserGroovy() {
+        step("Verify user using groovy", () -> {
+            given()
+                    .spec(registerRequestSpec)
+                    .when()
+                    .get("/users?page=2")
+                    .then()
+                    .spec(registerResponseSpec)
+                    .body("data.find{it.id == 12}.email", is("rachel.howell@reqres.in"));
+        });
+    }
+
+
+    @Test
+    @DisplayName("List users")
+    @Tag("rest-api")
+    public void listUsersGroovy() {
+        step("Verify id using groovy", () -> {
+            given()
+                    .spec(registerRequestSpec)
+                    .when()
+                    .get("users?page=2")
+                    .then()
+                    .spec(registerResponseSpec)
+                    .body("data.findAll{it}.id.flatten()", hasItem(12));
         });
     }
 }
